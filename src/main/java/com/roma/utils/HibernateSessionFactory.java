@@ -1,5 +1,6 @@
 package com.roma.utils;
 
+import com.roma.models.Car;
 import com.roma.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -13,6 +14,7 @@ public class HibernateSessionFactory {
         if (factory == null) {
             Configuration configuration = new Configuration();
             configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Car.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());
         }

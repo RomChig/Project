@@ -4,6 +4,8 @@ import com.roma.DAO.UserDAO;
 import com.roma.DAOImpl.UserDaoImpl;
 import com.roma.models.User;
 import com.roma.services.UserService;
+
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService<User> {
@@ -11,7 +13,7 @@ public class UserServiceImpl implements UserService<User> {
     private static final UserDAO userDAO = new UserDaoImpl();
 
     @Override
-    public Optional<User> findByName(String name) {
+    public Optional<List<User>> findByName(String name) {
         return userDAO.findByName(name);
     }
 

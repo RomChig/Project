@@ -1,10 +1,14 @@
 package com.roma.models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users2")
-public class User {
+@Component("user")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,10 +20,10 @@ public class User {
     public User() {
     }
 
-//    public User(String name, Long age) {
-//        this.name = name;
-//        this.age = age;
-//    }
+    public User(String name, Long age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public Long getId() {
         return id;

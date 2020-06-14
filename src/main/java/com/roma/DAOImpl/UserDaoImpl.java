@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
+import java.util.List;
 import java.util.Optional;
 
 public class UserDaoImpl implements UserDAO {
@@ -43,16 +44,16 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public Optional<User> findByName(String name) {
-        User user = null;
+    public Optional<List<User>> findByName(String name) {
+        List<User> userList = null;
         try (Session session = HibernateSessionFactory.getSessionFactory().openSession()) {
             Query query = session.createQuery("from User where name = :name");
             query.setParameter("name", name);
-            user = (User) query.getSingleResult();
+            userList = query.getResultList();
         } catch (HibernateException h) {
             System.out.println("Couldn't find user by name");
         }
-        return Optional.ofNullable(user);
+        return Optional.ofNullable(userList);
     }
 
     @Override
