@@ -30,7 +30,7 @@
     </build>
 
     <properties>
-        <hibernate-version>5.4.17.Final</hibernate-version>
+        <hibernate-version>5.4.24.Final</hibernate-version>
     </properties>
 
     <dependencies>
